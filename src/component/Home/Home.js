@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import Data from '../FakeData/fakedata';
 import Place from '../Place/Place';
 
 const Home = () => {
    const [place,setPlace] = useState(Data);
+   const [selectPlace, setSelectPlace] = useState([])
+   const {name,description,pd} = selectPlace;
    const handleEventHandler =(place) => {
        console.log("Place is click",place)
+       setSelectPlace(place)
 
    }
     return (
@@ -14,15 +18,15 @@ const Home = () => {
 
         <div className="row">
           <div className="col-sm-6">
-          <Card style={{ width: '42rem' }}>
-  <Card.Img variant="top" src="holder.js/100px180" />
+          <Card style={{ width: '43.5rem' }}>
+ 
   <Card.Body>
-    <Card.Title>Card Title</Card.Title>
+    <Card.Title>{name}</Card.Title>
     <Card.Text>
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </Card.Text>
-    <Button variant="primary">Go somewhere</Button>
+     {description}
+    </Card.Text>  
+    <Link to={`/booking/${pd}`}> <Button variant="primary">Booking</Button></Link>
+    
   </Card.Body>
 </Card>
                 
