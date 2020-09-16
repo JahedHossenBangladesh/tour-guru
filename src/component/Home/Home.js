@@ -7,12 +7,11 @@ import Place from '../Place/Place';
 const Home = () => {
    const [place,setPlace] = useState(Data);
    const [selectPlace, setSelectPlace] = useState([])
-   const {name,description,pd} = selectPlace;
+   const {name,description,id} = selectPlace;
    const handleEventHandler =(place) => {
-       console.log("Place is click",place)
-       setSelectPlace(place)
-
-   }
+      
+       setSelectPlace(place);
+ }
     return (
 
 
@@ -25,7 +24,7 @@ const Home = () => {
     <Card.Text>
      {description}
     </Card.Text>  
-    <Link to={`/booking/${pd}`}> <Button variant="primary">Booking</Button></Link>
+    <Link to={`/booking/${id}`}> <Button variant="primary">Booking</Button></Link>
     
   </Card.Body>
 </Card>
@@ -35,7 +34,7 @@ const Home = () => {
 
                 <div  className="row">
                 {
-                place.map(info => <Place handleEventHandler={handleEventHandler} location={info}></Place>)
+                place.map(info => <Place handleEventHandler= {handleEventHandler} location={info}></Place>)
             }
                 </div>
             </div>
