@@ -6,13 +6,13 @@ const{name,img,description,id} = props.location;
 
 
 return (
-        <div className="col-sm-4 places">
+        <div className="col-sm-4 places" >
 
 
-            <Card style={{ width: '15rem' ,border:"",   marginTop: "20px"}} >
+            <Card style={{ width: '15rem' ,border:"", padding:'-15rem', marginTop: ""}} >
 
 
-            <button onClick={() => props.handleEventHandler(props.location)} style={{margin:"px"}}>
+            <button onClick={() => props.handleEventHandler(props.location)} style={{margin:"px",border:"none"}}>
             
             <Card.Img variant="top" src={img} style={{padding:"2px"}}/>
              

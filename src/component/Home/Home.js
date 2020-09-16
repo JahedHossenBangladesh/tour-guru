@@ -15,7 +15,7 @@ const Home = () => {
     return (
 
 
-        <div className="row">
+        <div className="row"  style={{margin:'20px'}} >
           <div className="col-sm-6">
           <Card style={{ width: '43.5rem' }}>
  
