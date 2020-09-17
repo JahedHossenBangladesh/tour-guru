@@ -12,16 +12,18 @@ import {
 import Booking from './component/Booking/Booking';
 import Login from './component/Login/Login';
 import HotelDetail from './component/HotelDetail/HotelDetail';
-export  const UserContext = createContext();
+import PrivateRoute from './component/PrivateRoute/PrivateRoute';
+export  const BookerContext = createContext();
 export  const PlaceContext = createContext();
 
 function App() {
+  const [loggedInUser,setLoggedInUser] = useState({});
    const [matchPlace,setMatchPlace] = useState({});
-   const [loggedInUser,setLoggedInUser] = useState({});
+  
   return (
   <>
   <p>the id is {matchPlace.name}</p>
-  <UserContext.Provider value ={[loggedInUser,setLoggedInUser]}>
+  <BookerContext.Provider value ={[loggedInUser,setLoggedInUser]}>
   <PlaceContext.Provider value={[matchPlace,setMatchPlace]}>
     
     <p></p>
@@ -36,17 +38,17 @@ function App() {
 <Route path="/login">
   <Login></Login>
 </Route>
-<Route path="/hotelDetail" >
+<PrivateRoute path="/hotelDetail" >
   <HotelDetail></HotelDetail>
 
-</Route>
+</PrivateRoute>
 
 </Switch>
 
   </Router>
 
   </PlaceContext.Provider>
-  </UserContext.Provider>
+  </BookerContext.Provider>
   </>
   );
 }
