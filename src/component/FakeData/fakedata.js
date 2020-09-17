@@ -1,6 +1,6 @@
 const info =[
  
-    // https://i.imgur.com/78hONQB.png
+    
 {
     id:1,
     name:"Cox-Bazar",

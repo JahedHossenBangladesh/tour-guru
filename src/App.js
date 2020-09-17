@@ -10,13 +10,18 @@ import {
   Link
 } from "react-router-dom";
 import Booking from './component/Booking/Booking';
+import Login from './component/Login/Login';
+import HotelDetail from './component/HotelDetail/HotelDetail';
+export  const UserContext = createContext();
 export  const PlaceContext = createContext();
 
 function App() {
    const [matchPlace,setMatchPlace] = useState({});
+   const [loggedInUser,setLoggedInUser] = useState({});
   return (
   <>
   <p>the id is {matchPlace.name}</p>
+  <UserContext.Provider value ={[loggedInUser,setLoggedInUser]}>
   <PlaceContext.Provider value={[matchPlace,setMatchPlace]}>
     
     <p></p>
@@ -27,7 +32,12 @@ function App() {
 </Route>
 <Route path="/booking/:id">
 <Booking></Booking>
-
+</Route>
+<Route path="/login">
+  <Login></Login>
+</Route>
+<Route path="/hotelDetail" >
+  <HotelDetail></HotelDetail>
 
 </Route>
 
@@ -36,6 +46,7 @@ function App() {
   </Router>
 
   </PlaceContext.Provider>
+  </UserContext.Provider>
   </>
   );
 }

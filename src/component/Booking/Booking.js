@@ -9,26 +9,26 @@ const Booking = () => {
   const [matchPlace,setMatchPlace] = useContext(PlaceContext);
 // above code is from material ui
 
-   let {id} = useParams()
+   let {id} = useParams();
        const [fakedata,setFakedata]=useState(Data);
         const [metch,setMetch] = useState([]);
         const {name,description} = metch;
-         const newid = metch.id;   
+          
          setMatchPlace(metch);
 
         
 
  useEffect(() =>{
 const bookingData = fakedata.find(pt => pt.id == id)
-console.log('booking', bookingData);
+// console.log('booking', bookingData);
 setMetch(bookingData);
 
     },[fakedata, id])
 
 
-    console.log('match',metch);
+//     console.log('match',metch);
              
-console.log('matchPlace',matchPlace);
+// console.log('matchPlace',matchPlace);
      
     return (
         <div  className="background">
@@ -51,7 +51,7 @@ console.log('matchPlace',matchPlace);
 <Form>
   <Form.Group controlId="formGroupEmail">
     <Form.Label>Orgin</Form.Label>
-    <Form.Control type="text" placeholder="Dhaka" />
+    <Form.Control type="text" placeholder="Dhaka" required/>
   </Form.Group>
   <Form.Group controlId="formGroupPassword">
     <Form.Label>Destination</Form.Label>
@@ -59,10 +59,10 @@ console.log('matchPlace',matchPlace);
   </Form.Group>
 
 <div  className="row">
-  <div  className="col-sm-6"><h5>Form:  -<input type="date" id="myDate" value="2014-02-09"></input>  </h5></div>
-  <div  className="col-sm-6"><h5>To:  -<input type="date" id="myDate" value="2014-02-09"></input>  </h5></div>
+  <div  className="col-sm-6"><h5>Form:  -<input type="date" id="myDate" value="2014-02-09"required></input>  </h5></div>
+  <div  className="col-sm-6"><h5>To:  -<input type="date" id="myDate" value="2014-02-09" required></input>  </h5></div>
 </div>
-<Link to={`/login/${newid}`}>
+<Link to={"/hotelDetail"}>
 <Button variant="primary" size="lg" block>
    Start Booking
   </Button>

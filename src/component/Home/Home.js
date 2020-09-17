@@ -35,7 +35,7 @@ const Home = () => {
                 <div  className="row">
                 {
                 place.map(info => <Place handleEventHandler= {handleEventHandler} location={info}></Place>)
-            }
+                }
                 </div>
             </div>
 
