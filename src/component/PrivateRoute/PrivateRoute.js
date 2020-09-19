@@ -1,12 +1,10 @@
 import React, { useContext } from 'react';
-import { Redirect, Route, useHistory, useLocation } from 'react-router-dom';
+import { Redirect, Route} from 'react-router-dom';
 import { BookerContext } from '../../App';
 
 const PrivateRoute = ({ children, ...rest }) => {
     const [loggedInUser, setLoggedInUser] = useContext(BookerContext);
-    const history = useHistory();
-    const location = useLocation();
-    const { from } = location.state || { from: { pathname: "/" } };
+    
 
 
     return (

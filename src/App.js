@@ -13,8 +13,10 @@ import Booking from './component/Booking/Booking';
 import Login from './component/Login/Login';
 import HotelDetail from './component/HotelDetail/HotelDetail';
 import PrivateRoute from './component/PrivateRoute/PrivateRoute';
+import Header from './component/Header/Header';
 export  const BookerContext = createContext();
 export  const PlaceContext = createContext();
+
 
 function App() {
   const [loggedInUser,setLoggedInUser] = useState({});
@@ -26,7 +28,7 @@ function App() {
   <BookerContext.Provider value ={[loggedInUser,setLoggedInUser]}>
   <PlaceContext.Provider value={[matchPlace,setMatchPlace]}>
     
-    <p></p>
+  <Header></Header>
   <Router>
 <Switch>
 <Route  exact path="/">

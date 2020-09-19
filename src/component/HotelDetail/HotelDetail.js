@@ -3,6 +3,9 @@ import { Card, ListGroup } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { PlaceContext} from '../../App'
 import data from '../../component/FakeDataDetail/FakeDataDetail';
+import Maap from '../Maap/Maap';
+
+
 
 const HotelDetail = () => {
     
