@@ -14,6 +14,8 @@ import Login from './component/Login/Login';
 import HotelDetail from './component/HotelDetail/HotelDetail';
 import PrivateRoute from './component/PrivateRoute/PrivateRoute';
 import Header from './component/Header/Header';
+import Authentication from './component/Authentication/Authentication';
+import LoginForm from './component/LoginForm/LoginForm';
 export  const BookerContext = createContext();
 export  const PlaceContext = createContext();
 
@@ -28,19 +30,24 @@ function App() {
   <BookerContext.Provider value ={[loggedInUser,setLoggedInUser]}>
   <PlaceContext.Provider value={[matchPlace,setMatchPlace]}>
     
-  <Header></Header>
+
   <Router>
 <Switch>
 <Route  exact path="/">
+<Header></Header>
   <Home></Home>
 </Route>
 <Route path="/booking/:id">
+<Header></Header>
 <Booking></Booking>
 </Route>
+
 <Route path="/login">
-  <Login></Login>
+
+  <LoginForm></LoginForm>
 </Route>
 <PrivateRoute path="/hotelDetail" >
+
   <HotelDetail></HotelDetail>
 
 </PrivateRoute>

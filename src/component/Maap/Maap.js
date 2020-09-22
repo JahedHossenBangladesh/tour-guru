@@ -10,9 +10,9 @@
 //          name={'Current location'} />
 
 //  <InfoWindow onClose={this.onInfoWindowClose}>
-//      {/* <div>
+//      <div>
 //        <h1>{this.state.selectedPlace.name}</h1>
-//      </div> */}
+//      </div>
 //  </InfoWindow>
 // </Map>
 //         </div>
