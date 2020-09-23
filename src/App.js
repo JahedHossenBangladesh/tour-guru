@@ -32,17 +32,23 @@ function App() {
     
 
   <Router>
+  <Header></Header>
+
 <Switch>
 <Route  exact path="/">
-<Header></Header>
+
+  <Home></Home>
+</Route>
+<Route  exact path="/home">
+
   <Home></Home>
 </Route>
 <Route path="/booking/:id">
-<Header></Header>
+
 <Booking></Booking>
 </Route>
 
-<Route path="/login">
+<Route exact path="/login">
 
   <LoginForm></LoginForm>
 </Route>

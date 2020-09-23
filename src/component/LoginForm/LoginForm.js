@@ -6,14 +6,14 @@ import { BookerContext } from '../../App';
 import HotelDetail from '../HotelDetail/HotelDetail';
 
 import Header from '../Header/Header';
+import { useHistory, useLocation } from 'react-router-dom';
 
-firebase.initializeApp(firebaseConfig);
+
 
 const LoginForm = () => {
 
     
-    const provider = new firebase.auth.GoogleAuthProvider();
-    const [loggedInUser, setLoggedInUser] = useContext(BookerContext);
+    
     const [newUser,setNewUser] = useState(false);
     const [user, setUser] = useState({
         isSignedIn: false,
@@ -23,7 +23,14 @@ const LoginForm = () => {
         error :'',
         success:false
     });
-    
+    const provider = new firebase.auth.GoogleAuthProvider();
+    const [loggedInUser, setLoggedInUser] = useContext(BookerContext);
+    const history = useHistory();
+    const location = useLocation();
+    let { from } = location.state || { from: { pathname: "/" } };
+    if(firebase.apps.length === 0){
+        firebase.initializeApp(firebaseConfig);
+    }
 // this is google sign in 
     const handleSignIn= () => {
         // const provider = new firebase.auth.GoogleAuthProvider();
@@ -36,7 +43,8 @@ const LoginForm = () => {
 
                }
               setUser(signedInUser);
-            //   setLoggedInUser(signedInUser);
+             setLoggedInUser(signedInUser);
+             history.replace(from)
           })
           .catch(error => {
             var errorCode = error.code;
@@ -92,6 +100,9 @@ const  handleSignOut = () => {
         newUserInfo.success= true;
         setUser(newUserInfo);
         updateUserInfo(user.name);
+        history.replace(from)
+         
+         
     })
     .catch(error =>{
         // Handle Errors here.
@@ -115,6 +126,8 @@ if(!newUser && user.name && user.password){
         newUserInfo.success= true;
         setUser(newUserInfo);
         setLoggedInUser(newUserInfo);
+        history.replace(from);
+
         console.log('user name', res.user);
 
     })
@@ -182,11 +195,19 @@ if(!newUser && user.name && user.password){
                 <button onClick={handleSignIn}>Google Sign in</button>
             } 
             {
-                user.isSignedIn && <HotelDetail></HotelDetail>
+                user.isSignedIn && 
+                <div>
+
+<HotelDetail></HotelDetail>
+                </div>
+                
  
              }
             {
-                user.success &&  <HotelDetail></HotelDetail>
+                user.success &&   <div>
+             
+                <HotelDetail></HotelDetail>
+                                </div>
 
             }
 

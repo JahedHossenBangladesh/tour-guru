@@ -3,6 +3,7 @@ import { Card, ListGroup } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { PlaceContext} from '../../App'
 import data from '../../component/FakeDataDetail/FakeDataDetail';
+import Locationdetai from '../Location/Locationdetai';
 import Maap from '../Maap/Maap';
 import './HotelDetail.css'
 
@@ -67,16 +68,17 @@ console.log("Selecthotel", selectHotel);
 </Card>
 </div>
 
-</div>
+
 <div  className="col-sm-6">
+<div className="google-map-code">
+          <iframe src={selectHotel.hotel} width="600" height="450" frameborder="0" style={{border:0}} allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 
-
-
-
+       
+        </div>
 
 </div>
 
-
+</div>
 
 
 
