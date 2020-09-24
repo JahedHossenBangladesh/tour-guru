@@ -26,7 +26,7 @@ function App() {
   
   return (
   <>
-  <p>the id is {matchPlace.name}</p>
+
   <BookerContext.Provider value ={[loggedInUser,setLoggedInUser]}>
   <PlaceContext.Provider value={[matchPlace,setMatchPlace]}>
     

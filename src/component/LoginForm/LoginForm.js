@@ -23,6 +23,9 @@ const LoginForm = () => {
         error :'',
         success:false
     });
+
+
+    
     const provider = new firebase.auth.GoogleAuthProvider();
     const [loggedInUser, setLoggedInUser] = useContext(BookerContext);
     const history = useHistory();
@@ -31,6 +34,10 @@ const LoginForm = () => {
     if(firebase.apps.length === 0){
         firebase.initializeApp(firebaseConfig);
     }
+
+
+
+
 // this is google sign in 
     const handleSignIn= () => {
         // const provider = new firebase.auth.GoogleAuthProvider();
@@ -39,7 +46,8 @@ const LoginForm = () => {
                const signedInUser ={
                   isSignedIn:true,
                   name: displayName,
-                  email:email
+                  email:email,
+                  sucess:true
 
                }
               setUser(signedInUser);
@@ -52,6 +60,9 @@ const LoginForm = () => {
             var email = error.email;
             var credential = error.credential;
            });
+
+
+
     }
 const  handleSignOut = () => {
     firebase.auth().signOut().then(res => {
@@ -91,6 +102,10 @@ const  handleSignOut = () => {
         }
         
         }
+
+
+
+
     const handleSubmit = (e) => {
    if( newUser && user.name && user.password){
     firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
@@ -100,7 +115,8 @@ const  handleSignOut = () => {
         newUserInfo.success= true;
         setUser(newUserInfo);
         updateUserInfo(user.name);
-        history.replace(from)
+        
+         // i cant use the history api becouse if use history in the line the account is not creat
          
          
     })
@@ -145,6 +161,8 @@ if(!newUser && user.name && user.password){
 
    e.preventDefault();
     }
+
+    
     const updateUserInfo = name =>{
         var user = firebase.auth().currentUser;
 
@@ -195,19 +213,14 @@ if(!newUser && user.name && user.password){
                 <button onClick={handleSignIn}>Google Sign in</button>
             } 
             {
-                user.isSignedIn && 
-                <div>
-
-<HotelDetail></HotelDetail>
-                </div>
+                user.isSignedIn &&  <HotelDetail></HotelDetail>
+                
                 
  
              }
             {
-                user.success &&   <div>
-             
-                <HotelDetail></HotelDetail>
-                                </div>
+                user.success && <HotelDetail></HotelDetail>
+                               
 
             }
 
